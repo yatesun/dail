@@ -27,6 +27,22 @@ func newDial() *Dial {
 	return &Dial{m: m}
 }
 
+// Stage 2
+// 0-99
+func (d Dial) convertDigits2(arr ...int) (list []string) {
+	var arr2 []int
+	for _, i := range arr {
+		if i < 10 {
+			arr2 = append(arr2, i)
+		} else {
+			arr2 = append(arr2, i/10, i%10)
+		}
+	}
+	return d.convertDigits2(arr2...)
+}
+
+// Stage 1
+// 0-9
 func (d Dial) convertDigits(arr ...int) (list []string) {
 	// empty arr
 	if len(arr) == 0 {
